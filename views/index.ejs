@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="main" class="w-full h-screen bg-zinc-900">
+    <div id="form"  class="p-10">
+      <form action="/create" method="post" >
+        <input type="text" class="block w-full px-4 py-2 bg-zinc-800 outline-none text-white placeholder:text-white rounded-lg font-[gilroy]" placeholder="Enter Title" name="title">
+        <textarea class="resize-none w-full px-4 py-3 bg-zinc-800 outline-none font-[gilroy] placeholder:text-white rounded-lg text-white mt-5" placeholder="Enter Description" name="details"></textarea>
+        <input class="px-4 py-2 rounded-lg bg-blue-600 font-[gilroy] mt-5" type="submit" placeholder="Submit">
+      </form>
+    </div>
+    <div id="tasks" class="p-10 flex flex-wrap gap-4">
+      <% if(files.length>0) { %>
+          <% files.forEach(function(val){ %>
+            <div class="min-w-72 bg-zinc-800 rounded-lg p-5 text-white font-[gilroy]">
+              <h1 class="text-lg font-bold"><%= val %></h1>
+              <div class="w-full flex items-center justify-between  mt-3">
+                <a href="/file/<%= val %>" class="underline text-blue-500 text-sm inline-block">Read More</a>
+                <a href="/edit/<%= val%>" class="underline text-red-500">Edit file name</a>
+              </div>
+            </div>
+         <% }); %>
+      <% } else { %>
+        <h3 class="text-white font-[gilroy] px-0">No tasks to show!</h3>
+      <% } %>
+      
+      
+  </div>
+  
+  
+  <script src="/javascripts/script.js"></script>
+</body>
+</html>
